@@ -25,13 +25,12 @@ reset.addEventListener("click", (e) =>{
         
     }
 })
-//get grid items
+//get grid items we could make this a function
 const gridCollection = document.getElementsByClassName('grid-item');
 //get array because collection sucks
 const gridItems = Array.from(gridCollection);
 
 //nested event listener 
-
 gridItems.forEach(item => {
     item.addEventListener('mouseover', (e) =>{
         item.style.backgroundColor = "grey";
