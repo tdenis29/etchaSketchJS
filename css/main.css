@@ -4,15 +4,17 @@
   }
   
   #container {
-    width: 50rem;
-    height: 35rem;
+    width: 45rem;
+    max-width: 45rem;
+    height: 45rem;
+    max-height: 45rem;
     display: grid;
     margin: 0 auto;
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
   }
   .grid-item {
-    padding: .2rem;
+    padding: .5rem;
     border: 1px solid #ddd;
     text-align: center;
   }
