@@ -1,3 +1,4 @@
+
 /*onload needs to load starter grid and begin listener.
 then on reset we need to 
 1. erase colored squares ? function eraseSquares ? classlist maybe needed to handle rainbow squares.
@@ -7,6 +8,7 @@ then on reset we need to
 */
 const container = document.getElementById("container");
 const reset = document.getElementById('reset');
+const clearer = document.getElementById('clear')
 // this makes the grid for strarter and reset 
 function makeRows(rows, cols) {
   container.style.setProperty('--grid-rows', rows);
@@ -20,13 +22,12 @@ function makeRows(rows, cols) {
   gridItems.forEach(item => {
     item.addEventListener('mouseover', (e) =>{
         item.style.backgroundColor = "grey";
-        //add class to toggle for draw/erase?
-        
+        // add class to toggle for draw/erase? 
     })
 });
 };
 makeRows(16, 16);
-//erase grid
+// erase grid
 function eraseSquares(){
     const gridCollection = document.getElementsByClassName('grid-item');
     const gridItems = Array.from(gridCollection);
@@ -36,15 +37,19 @@ function eraseSquares(){
         }
     })
 }
-//reset needs to erased
+
+//event listenrs
+clearer.addEventListener('click', e => {
+    eraseSquares();
+})
 reset.addEventListener("click", (e) =>{
     let newGrid = prompt("Enter a number between 16-100");
     let newGridInt = parseInt(newGrid);
-    if(newGridInt > 100){
-        alert("Too Big")
+    if(newGridInt > 100 || newGridInt === NaN){
+        alert("Number is too big or not a number! C'MON MAN!")
     }
     else{
-        eraseSquares();
+        container.innerHTML = "";
         makeRows(newGridInt, newGridInt);
     }
 })
